@@ -51,7 +51,7 @@ public class RoadTool : Editor
 		GameObject go = new GameObject();
 		Road r = go.AddComponent<Road>();
 		r.acceptInput = true;
-		r.mat = (Material)Resources.LoadAssetAtPath("Assets/RoadTool/Example/Texture/Materials/Road.mat", typeof(Material));
+		r.mat = (Material)AssetDatabase.LoadAssetAtPath("Assets/RoadTool/Example/Texture/Materials/Road.mat", typeof(Material));
 		go.name = "Road " + go.GetInstanceID();
 		go.AddComponent<MeshRenderer>();
 		Selection.activeObject = go;
@@ -172,7 +172,7 @@ public class RoadTool : Editor
 
 		if(e.modifiers != 0 || Tools.current != Tool.Move)
 		{
-			if(e.type == EventType.mouseUp && e.button == 0 && Tools.current != Tool.Move && e.modifiers == 0)
+			if(e.type == EventType.MouseUp && e.button == 0 && Tools.current != Tool.Move && e.modifiers == 0)
 			{
 				FindSceneView().ShowNotification(new GUIContent("Tool must be set to 'Move' to place points!", ""));
 				SceneView.RepaintAll();
@@ -180,7 +180,7 @@ public class RoadTool : Editor
 			return;		
 		}
 
-		if( (e.type == EventType.mouseDown || e.type == EventType.mouseDrag) && e.button == 0)
+		if( (e.type == EventType.MouseDown || e.type == EventType.MouseDrag) && e.button == 0)
 		{
 			Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
 			RaycastHit ground = new RaycastHit();
@@ -190,7 +190,7 @@ public class RoadTool : Editor
 		}
 			
 		// Listen for mouse input
-		if(e.type == EventType.mouseUp && e.button == 0)
+		if(e.type == EventType.MouseUp && e.button == 0)
 		{
 			Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
 			RaycastHit ground = new RaycastHit();
